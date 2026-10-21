@@ -1,6 +1,7 @@
 <div align="center">
   <h1>Thunder</h1>
-
+  <h1>Главный кодер</h1>
+  <h1>Claude Opus 5.5</h1>
   <br>
 </div>
 
