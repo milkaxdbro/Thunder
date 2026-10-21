@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "thunder-fabric-mc261",
+  "version": "${version}",
+  "name": "Thunder mc261",
+  "description": "Модуль Thunder для Minecraft 26.1+.",
+  "license": "GPLv3",
+  "environment": "server",
+  "entrypoints": {
+    "thunder26MainLoad": [
+      "ac.thunder.thunder.platform.fabric.mc261.Fabric261LoaderPlugin"
+    ]
+  },
+  "depends": {
+    "minecraft": ">=26.1.2 <26.3",
+    "java": ">=25",
+    "fabricloader": ">=0.19",
+    "packetevents": "*"
+  }
+}

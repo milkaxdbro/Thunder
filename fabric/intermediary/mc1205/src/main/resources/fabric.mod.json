@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "thunder-mc1205",
+  "version": "${version}",
+  "name": "Thunder for 1.20+ built against 1.20.5",
+  "description": "Симуляционный античит Thunder.",
+  "authors": [
+    "Thunder"
+  ],
+  "license": "GPLv3",
+  "environment": "server",
+  "entrypoints": {
+    "thunderMainLoad": [
+      "ac.thunder.thunder.platform.fabric.mc1205.ThunderFabric1200LoaderPlugin"
+    ]
+  },
+  "accessWidener": "thunder.accesswidener",
+  "depends": {
+    "minecraft": ">=1.20 \u003c26",
+    "fabric-lifecycle-events-v1": "*"
+  }
+}

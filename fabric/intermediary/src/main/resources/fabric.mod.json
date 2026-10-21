@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "thunder-fabric-intermediary",
+  "version": "${version}",
+  "name": "Thunder",
+  "description": "Симуляционный античит Thunder.",
+  "authors": [
+    "Thunder"
+  ],
+  "license": "GPLv3",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "ac.thunder.thunder.platform.fabric.ThunderFabricIntermediaryEntryPoint"
+    ],
+    "preLaunch": [
+      "ac.thunder.thunder.platform.fabric.ThunderFabricIntermediaryEntryPoint"
+    ]
+  },
+  "mixins": [
+    "thunder.mixins.json"
+  ],
+  "accessWidener": "thunder.accesswidener",
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/world/level/Level": [
+        "ac/thunder/thunder/platform/api/world/PlatformWorld"
+      ],
+      "net/minecraft/world/entity/Entity": [
+        "ac/thunder/thunder/platform/fabric/inject/FabricEntityHandle"
+      ],
+      "net/minecraft/server/level/ServerPlayer": [
+        "ac/thunder/thunder/platform/fabric/inject/FabricServerPlayerHandle"
+      ],
+      "net/minecraft/server/MinecraftServer": [
+        "ac/thunder/thunder/platform/fabric/inject/FabricMinecraftServerHandle"
+      ],
+      "net/minecraft/commands/CommandSourceStack": [
+        "ac/thunder/thunder/platform/api/sender/Sender"
+      ]
+    }
+  },
+  "depends": {
+    "minecraft": "\u003e\u003d1.16.1 \u003c26",
+    "java": "\u003e\u003d17",
+    "fabricloader": "\u003e\u003d0.16",
+    "fabric-lifecycle-events-v1": "*",
+    "packetevents": "*"
+  },
+  "recommends": {
+    "cloud": "*",
+    "fabric-permissions-api-v0": "*",
+    "luckperms": "*"
+  }
+}
