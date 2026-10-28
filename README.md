@@ -13,7 +13,7 @@ A premium version is planned, which will offer additional subscription-based pai
 
 ## Downloads
 
-- Скачивание: [GitHub Releases] releases и Telegram [@froriym81](https://t.me/froriym81).
+- Скачивание: [GitHub Releases](https://github.com/milkaxdbro/Thunder/releases) и Telegram [@froriym81](https://t.me/froriym81).
 
 ## Requirements & Installation
 
