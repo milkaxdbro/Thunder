@@ -27,25 +27,12 @@ If you use a proxy such as Velocity or BungeeCord:
 
 ## Resources
 
-- Поддержка и вопросы: Telegram [@froriym81](https://t.me/froriym81).
+- Поддержка и вопросы: Telegram [@martapantera](https://t.me/martapantera).
 
 ## Pull Requests
 
 See [Contributing](CONTRIBUTING.md) for more information about contributing and what our guidelines
 are.
-
-## Developer Plugin API
-
-Thunder's plugin API allows you to integrate Thunder into your own plugins. Visit
-the [plugin API repository](https://github.com/GrimAnticheat/GrimAPI) for the source code and more
-information.
-
-## Compiling From Source
-
-1. `git clone https://github.com/Axionize/LightningThunder`
-2. `cd LightningThunder`
-3. `./gradlew build`
-4. The final jars will compile into the `<platform>/build/libs` folders
 
 ## Thunder Supremacy
 
