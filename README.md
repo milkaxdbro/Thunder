@@ -5,7 +5,7 @@
   <br>
 </div>
 
-Thunder — античит для Minecraft с русской локализацией из коробки (переименованный форк GrimAC).
+Thunder — античит для Minecraft с русской локализацией из коробки (форк GrimAC).
 Поддерживаются версии Minecraft 1.19–26.3. Игроки Geyser полностью освобождены от проверок во избежание ложных срабатываний.
 Команды: `/thunder` (алиас `/th`), права: `thunder.*` (например `thunder.alerts`, `thunder.exempt`).
 This project is considered feature-complete for the 2.0 (open-source) branch. If you would like a bug fix or enhancement and cannot sponsor the work, pull requests are welcome.
