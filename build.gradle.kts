@@ -17,7 +17,7 @@ BuildConfig.init(project)
 val baseVersion = "2.3.74"
 group = "ac.thunder.thunder"
 version = VersionUtil.computeVersion(project, baseVersion)
-description = "Libre simulation anticheat designed for 26.3 with 1.8–26.3 support, powered by PacketEvents 2.0."
+description = "Libre simulation anticheat designed for 26.3 with 1.19–26.3 support, powered by PacketEvents 2.0."
 
 ext["timestamp"] = System.currentTimeMillis().toString()
 ext["git_branch"] = VersionUtil.getGitBranch(project, true)

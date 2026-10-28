@@ -2,7 +2,6 @@ package ac.thunder.thunder.utils.data;
 
 import ac.thunder.thunder.player.ThunderPlayer;
 import ac.thunder.thunder.utils.math.Vector3dm;
-import ac.thunder.thunder.utils.data.IndexedVector3d;
 import ac.thunder.thunder.utils.nmsutil.StuckSpeed;
 import lombok.Getter;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;

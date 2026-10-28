@@ -2,7 +2,6 @@ package ac.thunder.thunder.checks.impl.packetorder;
 
 import ac.thunder.thunder.checks.Check;
 import ac.thunder.thunder.checks.CheckData;
-import ac.thunder.thunder.checks.type.PacketReceiveListener;
 import ac.thunder.thunder.checks.type.PostPredictionListener;
 import ac.thunder.thunder.checks.type.PreViaPacketReceiveListener;
 import ac.thunder.thunder.player.ThunderPlayer;

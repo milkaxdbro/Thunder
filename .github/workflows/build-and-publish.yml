@@ -78,14 +78,6 @@ jobs:
               with:
                   cache-read-only: ${{ github.ref_name != github.event.repository.default_branch && github.ref_name != 'dev' }}
 
-            - name: Cache Gradle Loom Cache
-              uses: actions/cache@v4
-              with:
-                  path: .gradle/loom-cache
-                  key: loom-cache-${{ runner.os }}-${{ hashFiles('**/libs.versions.toml', 'fabric/**/build.gradle.kts') }}
-                  restore-keys: |
-                      loom-cache-${{ runner.os }}
-
             - name: Set Git Environment Variables
               run: |
                   echo "THUNDER_GIT_REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
@@ -138,13 +130,6 @@ jobs:
               with:
                   name: thunder-bukkit
                   path: ${{ github.workspace }}/bukkit/build/libs/thunder-bukkit-${{ env.BUILD_VERSION }}.jar
-                  if-no-files-found: error
-
-            - name: Upload Fabric Artifact
-              uses: actions/upload-artifact@v6
-              with:
-                  name: thunder-fabric
-                  path: ${{ github.workspace }}/fabric/build/libs/thunder-fabric-${{ env.BUILD_VERSION }}.jar
                   if-no-files-found: error
 
             #------------------------------------------------------------------
@@ -276,33 +261,9 @@ jobs:
                   version-type: ${{ inputs.release-version-type }}
                   changelog: ${{ steps.changelog.outputs.notes }}
                   loaders: |
-                      bukkit
-                      spigot
                       paper
-                      folia
                       purpur
-                  game-versions: '>=1.7 <=26.2'
-
-            - name: Publish Fabric to Modrinth
-              if: ${{ inputs.publish-artifacts == true && env.MODRINTH_ID != '' && env.MODRINTH_TOKEN != '' }}
-              uses: Kir-Antipov/mc-publish@v3.3
-              with:
-                  modrinth-id:    ${{ secrets.MODRINTH_ID }}
-                  modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
-                  modrinth-featured: ${{ inputs.is-release-build }} # Only feature release builds
-
-                  files: fabric/build/libs/thunder-fabric-${{ env.BUILD_VERSION }}.jar
-                  name: LightningThunder Anticheat (Fabric) ${{ env.BUILD_VERSION }}-b${{ steps.buildnumber.outputs.build_number }}
-                  version: ${{ env.BUILD_VERSION }}-b${{ steps.buildnumber.outputs.build_number }}
-                  version-type: ${{ inputs.release-version-type }}
-                  changelog: ${{ steps.changelog.outputs.notes }}
-                  loaders: |
-                      fabric
-                  # Union of both shipped variants. Keep in sync with fabric.mod.json depends.minecraft.
-                  game-versions: |
-                      >=1.16.1 <26
-                      >=26.1.2 <26.2
-                  dependencies: 'fabric-api'
+                  game-versions: '>=1.19 <=26.3'
 
             - name: Publish to API
               if: ${{ inputs.publish-artifacts == true && env.BUILD_UPDATE_TOKEN != '' && inputs.is-release-build == false }}

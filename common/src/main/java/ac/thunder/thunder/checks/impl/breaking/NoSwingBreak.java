@@ -13,6 +13,7 @@ import com.github.retrooper.packetevents.protocol.player.DiggingAction;
 public class NoSwingBreak extends Check implements BlockBreakListener, PreViaPacketReceiveListener {
     private boolean sentAnimation;
     private boolean sentBreak;
+    private boolean exempt;
 
     public NoSwingBreak(ThunderPlayer player) {
         super(player);
@@ -33,7 +34,15 @@ public class NoSwingBreak extends Check implements BlockBreakListener, PreViaPac
 
         if (isTickPacket(event.getPacketType())) {
             if (sentBreak && !sentAnimation) {
-                flag();
+                // Exempt for a tick on teleport - the client can skip the animation packet
+                // right after a teleport while breaking (netcode desync)
+                if (player.packetStateData.lastPacketWasTeleport) {
+                    exempt = true;
+                } else if (exempt) {
+                    exempt = false;
+                } else {
+                    flag();
+                }
             }
 
             sentAnimation = sentBreak = false;

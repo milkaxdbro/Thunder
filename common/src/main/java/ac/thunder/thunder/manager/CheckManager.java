@@ -110,6 +110,7 @@ public class CheckManager implements BasicReloadable {
                 .put(PacketOrderC.class, new PacketOrderC(player))
                 .put(PacketOrderD.class, new PacketOrderD(player))
                 .put(SelfInteract.class, new SelfInteract(player))
+        .put(ElytraTarget.class, new ElytraTarget(player))
                 .put(MultiActionsA.class, new MultiActionsA(player))
                 .put(MultiActionsE.class, new MultiActionsE(player))
                 .put(VehicleA.class, new VehicleA(player))

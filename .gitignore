@@ -78,3 +78,9 @@ fabric/run/
 
 .ignored/
 /workspace.gradle.kts
+
+##############################
+## Python
+##############################
+__pycache__/
+*.pyc

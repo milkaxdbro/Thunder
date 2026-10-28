@@ -79,8 +79,38 @@ public final class ThunderBukkitLoaderPlugin extends JavaPlugin implements Platf
     @Override
     public void onLoad() {
         LOADER = this;
+        printBanner();
         ThunderAPI.INSTANCE.load(this, this.getBukkitInitTasks());
     }
+
+    private void printBanner() {
+        final java.util.logging.Logger log = Bukkit.getLogger();
+        for (final String line : BANNER) log.info(line);
+        log.info("Версия: " + getDescription().getVersion());
+        log.info("Поддержка версий Minecraft: 1.19 – 26.3 (Paper / Purpur)");
+        log.info(" ");
+    }
+
+    /**
+     * Startup banner. Kept as a plain string array so it prints even before the
+     * plugin is fully loaded.
+     */
+    private static final String[] BANNER = {
+            " ",
+            "██████████  ██      ██  ██      ██  ██      ██  ████████    ██████████  ████████    ",
+            "██████████  ██      ██  ██      ██  ██      ██  ████████    ██████████  ████████    ",
+            "    ██      ██      ██  ██      ██  ████    ██  ██      ██  ██          ██      ██  ",
+            "    ██      ██      ██  ██      ██  ████    ██  ██      ██  ██          ██      ██  ",
+            "    ██      ██████████  ██      ██  ██  ██  ██  ██      ██  ████████    ████████    ",
+            "    ██      ██████████  ██      ██  ██  ██  ██  ██      ██  ████████    ████████    ",
+            "    ██      ██      ██  ██      ██  ██    ████  ██      ██  ██          ██    ██    ",
+            "    ██      ██      ██  ██      ██  ██    ████  ██      ██  ██          ██    ██    ",
+            "    ██      ██      ██    ██████    ██      ██  ████████    ██████████  ██      ██  ",
+            "    ██      ██      ██    ██████    ██      ██  ████████    ██████████  ██      ██  ",
+            " ",
+            "Спасибо за использования ThunderAC! По всем вопросам @froriym81",
+            " "
+    };
 
     private Initable[] getBukkitInitTasks() {
         return new Initable[] {

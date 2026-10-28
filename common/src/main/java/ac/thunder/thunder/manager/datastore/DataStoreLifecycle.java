@@ -102,7 +102,7 @@ import java.util.logging.Logger;
  */
 public final class DataStoreLifecycle implements StartableInitable, StoppableInitable {
 
-    private static final String CHECKS_STORE = "grim_checks";
+    private static final String CHECKS_STORE = "thunder_checks";
     private static final StoreId OWNERSHIP_STORE = StoreId.grim("server_ownership");
 
     private final GrimPlugin plugin;
@@ -482,18 +482,18 @@ public final class DataStoreLifecycle implements StartableInitable, StoppableIni
         Map<Category<?>, V2BackendBootstrap.Binding<?>> out = new LinkedHashMap<>();
         if (cat == Categories.VIOLATION) {
             out.put(cat, new V2BackendBootstrap.Binding<>(
-                    StoreId.grim("grim_violations"), V2BuiltinKinds.violations()));
+                    StoreId.grim("thunder_violations"), V2BuiltinKinds.violations()));
             out.put(Categories.CHECK_CATALOG, new V2BackendBootstrap.Binding<>(
                     StoreId.grim(CHECKS_STORE), V2BuiltinKinds.checks()));
         } else if (cat == Categories.SESSION) {
             out.put(cat, new V2BackendBootstrap.Binding<>(
-                    StoreId.grim("grim_sessions"), V2BuiltinKinds.sessions()));
+                    StoreId.grim("thunder_sessions"), V2BuiltinKinds.sessions()));
         } else if (cat == Categories.PLAYER_IDENTITY) {
             out.put(cat, new V2BackendBootstrap.Binding<>(
-                    StoreId.grim("grim_players"), V2BuiltinKinds.players()));
+                    StoreId.grim("thunder_players"), V2BuiltinKinds.players()));
         } else if (cat == Categories.SETTING) {
             out.put(cat, new V2BackendBootstrap.Binding<>(
-                    StoreId.grim("grim_settings"), V2BuiltinKinds.settings()));
+                    StoreId.grim("thunder_settings"), V2BuiltinKinds.settings()));
         }
         return out;
     }
@@ -943,7 +943,7 @@ public final class DataStoreLifecycle implements StartableInitable, StoppableIni
             new MigrationContext() {};
 
     private void maybeWarnUnexpectedIdShape(@NotNull MongoDatabase db) {
-        for (String coll : new String[]{"grim_sessions", "grim_players"}) {
+        for (String coll : new String[]{"thunder_sessions", "thunder_players"}) {
             try {
                 Document first = db.getCollection(coll).find().limit(1).first();
                 if (first == null) continue;

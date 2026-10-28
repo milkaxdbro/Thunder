@@ -19,7 +19,7 @@ public class SprintB extends Check implements PostPredictionListener {
     @Override
     public boolean isApplicable() {
         // https://bugs.mojang.com/browse/MC-152728
-        return player.getClientVersion().isOlderThan(ClientVersion.V_1_14_2) || player.getClientVersion() == ClientVersion.V_1_21_4;
+        return player.getClientVersion().isOlderThan(ClientVersion.V_1_14_2) || player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_21_4);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SprintB extends Check implements PostPredictionListener {
             }
 
             // https://github.com/GrimAnticheat/Grim/issues/1948
-            if (version == ClientVersion.V_1_21_4 && (Collections.max(player.uncertaintyHandler.pistonX) != 0
+            if (version.isNewerThanOrEquals(ClientVersion.V_1_21_4) && (Collections.max(player.uncertaintyHandler.pistonX) != 0
                     || Collections.max(player.uncertaintyHandler.pistonY) != 0
                     || Collections.max(player.uncertaintyHandler.pistonZ) != 0)) {
                 return;

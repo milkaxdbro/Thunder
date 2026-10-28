@@ -20,26 +20,37 @@ public class SelfInteract extends Check implements PreViaPacketReceiveListener {
     public void onPreViaPacketReceive(PacketReceiveEvent event) {
         if (event.getPacketType() == PacketType.Play.Client.INTERACT_ENTITY) {
             WrapperPlayClientInteractEntity packet = new WrapperPlayClientInteractEntity(event);
-            onInteract(event, packet.getEntityId());
+            onInteract(event, packet.getEntityId(), false);
         }
 
         if (event.getPacketType() == PacketType.Play.Client.ATTACK) {
             WrapperPlayClientAttack packet = new WrapperPlayClientAttack(event);
-            onInteract(event, packet.getEntityId());
+            onInteract(event, packet.getEntityId(), false);
         }
 
         if (event.getPacketType() == PacketType.Play.Client.SPECTATE_ENTITY) {
             WrapperPlayClientSpectateEntity packet = new WrapperPlayClientSpectateEntity(event);
-            onInteract(event, packet.getEntityId());
+            onInteract(event, packet.getEntityId(), true);
         }
     }
 
-    // TODO: should check for camera entity id instead of player entity id?
-    private void onInteract(PacketReceiveEvent event, int entityId) {
+    private void onInteract(PacketReceiveEvent event, int entityId, boolean spectate) {
+        // Interacting/attacking yourself is impossible in vanilla (Instant ban)
         if (player.cameraEntity.isSelf() && entityId == player.entityID
-                && flag() && shouldModifyPackets()) { // Instant ban
+                && flag() && shouldModifyPackets()) {
             event.setCancelled(true);
             player.onPacketCancel();
+            return;
+        }
+
+        // While spectating an entity, the vanilla client cannot attack or interact with the
+        // spectated entity (it can only send SPECTATE_ENTITY). Don't cancel in case of a
+        // lagged camera transition.
+        if (!spectate && !player.cameraEntity.isSelf()
+                && player.cameraEntity.getPossibilities().stream()
+                        .anyMatch(e -> player.compensatedEntities.getPacketEntityID(e) == entityId)
+                && flag()) {
+            // no packet cancel
         }
     }
 }

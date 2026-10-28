@@ -63,23 +63,25 @@ dependencies {
         }
         exclude(group = "org.yaml", module = "snakeyaml")
     }
-    // Bump snakeyaml (transitive dep of configuralize) 1.29 -> 2.2+ for geyser-fabric
+    // Bump snakeyaml (transitive dep of configuralize) 1.29 -> 2.2+ for geyser/floodgate
     api(libs.snakeyaml)
     api(libs.fastutil)
     api(libs.adventure.text.minimessage)
     api(libs.jetbrains.annotations)
     api(libs.hikaricp)
     runtimeOnly(libs.slf4j.jdk14)
-    api(libs.grim.api)
-    api(libs.grim.internal)
-    compileOnly(libs.grim.internal.shims)
+    api(libs.thunder.api)
+    api(libs.thunder.internal)
+    compileOnly(libs.thunder.internal.shims)
     compileOnly(libs.mongoDriverSync)
 
     compileOnly(libs.geyser.base.api) {
         isTransitive = false // messes with guava otherwise
     }
 
-    compileOnly(libs.floodgate.api)
+    compileOnly(libs.floodgate.api) {
+        exclude(group = "org.geysermc") // dead upstream snapshot (org.geysermc:common:1.4.3-SNAPSHOT); only FloodgateApi is used
+    }
     compileOnly(libs.viaversion)
     compileOnly(libs.viabackwards)
     compileOnly(libs.netty)

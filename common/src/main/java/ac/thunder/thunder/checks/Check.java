@@ -46,6 +46,9 @@ public class Check extends ThunderProcessor implements AbstractCheck {
     private @MonotonicNonNull String description;
     private double decay;
     private double setbackVL;
+    // per-check config toggle ("checks.<ConfigName>: false" fully disables the check)
+    @Getter
+    private boolean disabled;
     @Setter private boolean isEnabled;
 
     // permissions
@@ -85,6 +88,7 @@ public class Check extends ThunderProcessor implements AbstractCheck {
 
     public boolean shouldModifyPackets() {
         return isEnabled
+                && !disabled
                 && !player.disableThunder
                 && !player.noModifyPacketPermission
                 && !noModifyPacketPermission
@@ -139,7 +143,7 @@ public class Check extends ThunderProcessor implements AbstractCheck {
     }
 
     private boolean recordFlag(@NotNull Supplier<String> verbose) {
-        if (player.disableThunder || (experimental && !player.isExperimentalChecks()) || exemptPermission)
+        if (disabled || player.disableThunder || (experimental && !player.isExperimentalChecks()) || exemptPermission)
             return false; // Avoid calling event if disabled
 
         if (FLAG_CHANNEL.fire(player, this, verbose)) return false;
@@ -155,7 +159,7 @@ public class Check extends ThunderProcessor implements AbstractCheck {
         Supplier<String> rendered = verbose.rendered();
         byte[] verboseData = verbose.data();
 
-        if (player.disableThunder || (experimental && !player.isExperimentalChecks()) || exemptPermission)
+        if (disabled || player.disableThunder || (experimental && !player.isExperimentalChecks()) || exemptPermission)
             return false; // Avoid calling event if disabled
 
         if (FLAG_CHANNEL.fire(player, this, rendered)) return false;
@@ -230,6 +234,9 @@ public class Check extends ThunderProcessor implements AbstractCheck {
             setbackVL = configuration.getDoubleElse(getConfigName() + ".setbackvl", defaultSetbackVL);
             displayName = MessageUtil.toSmallCaps(configuration.getStringElse(getConfigName() + ".displayname", checkName));
             description = MessageUtil.toSmallCaps(configuration.getStringElse(getConfigName() + ".description", defaultDescription));
+            // Per-check on/off switch, see the "checks:" block in config.yml.
+            // Unknown check names default to enabled so newly added checks stay on.
+            disabled = !configuration.getBooleanElse("checks." + getConfigName(), true);
 
             if (setbackVL == -1) setbackVL = Double.MAX_VALUE;
         }

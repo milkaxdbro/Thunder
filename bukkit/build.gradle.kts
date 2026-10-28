@@ -1,4 +1,4 @@
-﻿import net.minecrell.pluginyml.bukkit.BukkitPluginDescription.Permission
+import net.minecrell.pluginyml.bukkit.BukkitPluginDescription.Permission
 import versioning.BuildConfig
 import java.util.zip.ZipFile
 
@@ -126,7 +126,7 @@ dependencies {
     }
     implementation(libs.cloud.paper)
     implementation(libs.adventure.platform.bukkit)
-    implementation(libs.grim.bukkit.internal)
+    implementation(libs.thunder.bukkit.internal)
 
     implementation(project(":common"))
     shadow(project(":common"))

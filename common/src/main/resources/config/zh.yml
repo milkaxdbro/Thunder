@@ -1,5 +1,5 @@
 # Основная конфигурация Thunder
-# Исходный код: https://github.com/MWHunter/Grim
+# Исходный код: ThunderAC
 # Авторское право 2025 DefineOutside и соавторы, лицензия GPLv3.
 # Модифицированные двоичные файлы, или плагины со скопированным исходным кодом, должны быть приватными,
 # или с полным исходным кодом, доступным покупателям без дополнительной платы.
@@ -18,7 +18,7 @@ alerts:
 verbose:
     print-to-console: false
 
-check-for-updates: true
+check-for-updates: false
 
 client-brand:
     # Это означает, что он не будет транслировать свой бренд операторам, если бренд соответствует следующим регексам
@@ -221,6 +221,171 @@ debug-pipeline-on-join: false
 
 # Включает экспериментальные проверки
 experimental-checks: false
+# ============================================================================
+#  ВКЛЮЧЕНИЕ / ВЫКЛЮЧЕНИЕ ОТДЕЛЬНЫХ ПРОВЕРОК (ДЕТЕКТОВ)
+# ============================================================================
+# Каждую проверку из списка ниже можно выключить (false) — тогда она
+# перестанет флагать, отменять пакеты и выдавать наказания. true — проверка
+# работает. Проверки, отсутствующие в списке (новые), включены по умолчанию.
+# Проверки с пометкой "experimental" дополнительно требуют
+# experimental-checks: true. Вступает в силу после /thunder reload.
+checks:
+    # --- Аим / повороты камеры ---
+    AimDuplicateLook: true
+    AimModulo360: true
+    # --- Некорректные пакеты ---
+    BadPacketsA: true
+    BadPacketsB: true
+    BadPacketsC: true # experimental
+    BadPacketsD: true
+    BadPacketsE: true
+    BadPacketsF: true
+    BadPacketsG: true
+    BadPacketsH: true # experimental
+    BadPacketsI: true
+    BadPacketsJ: true
+    BadPacketsK: true
+    BadPacketsL: true
+    BadPacketsM: true # experimental
+    BadPacketsN: true
+    BadPacketsO: true
+    BadPacketsP: true # experimental
+    BadPacketsQ: true
+    BadPacketsR: true # experimental
+    BadPacketsS: true
+    BadPacketsU: true
+    BadPacketsV: true # experimental
+    BadPacketsX: true # experimental
+    BadPacketsY: true
+    BadPacketsZ: true # experimental
+    # --- Копание блоков ---
+    AirLiquidBreak: true
+    FarBreak: true # experimental
+    FastBreak: true
+    InvalidBreak: true
+    MultiBreak: true # experimental
+    NoSwingBreak: true # experimental
+    PositionBreakA: true
+    PositionBreakB: true
+    RotationBreak: true # experimental
+    WrongBreak: true
+    # --- Чат ---
+    ChatA: true # experimental
+    ChatB: true
+    ChatC: true # experimental
+    ChatD: true
+    # --- Бой: Reach, хитбоксы, атаки ---
+    ElytraTarget: true # experimental
+    EntityPierce: true
+    Hitboxes: true
+    InvalidInteractCursor: true
+    InvalidInteractTarget: true # experimental
+    MultiInteractA: true # experimental
+    MultiInteractB: true # experimental
+    Reach: true
+    SelfInteract: true
+    WallHit: true
+    # --- Краш-пакеты ---
+    CrashA: true
+    CrashB: true
+    CrashC: true
+    CrashD: true
+    CrashE: true
+    CrashF: true
+    CrashG: true
+    CrashH: true
+    CrashI: true
+    # --- Элитра ---
+    ElytraA: true
+    ElytraB: true
+    ElytraC: true
+    ElytraD: true # experimental
+    ElytraE: true # experimental
+    ElytraF: true
+    ElytraG: true # experimental
+    ElytraH: true # experimental
+    ElytraI: true # experimental
+    # --- Эксплойты ---
+    ExploitA: true
+    ExploitB: true
+    # --- NoFall ---
+    NoFall: true
+    # --- Инвентарь ---
+    InventoryA: true
+    InventoryB: true
+    InventoryC: true
+    InventoryD: true
+    InventoryE: true
+    InventoryF: true # experimental
+    InventoryG: true # experimental
+    # --- Разное ---
+    Post: true
+    TransactionOrder: true
+    # --- Движение ---
+    NoSlow: true
+    # --- Несовместимые действия ---
+    MultiActionsA: true # experimental
+    MultiActionsB: true # experimental
+    MultiActionsC: true
+    MultiActionsD: true
+    MultiActionsE: true # experimental
+    MultiActionsF: true # experimental
+    MultiActionsG: true # experimental
+    # --- Порядок пакетов ---
+    PacketOrderA: true # experimental
+    PacketOrderB: true
+    PacketOrderC: true
+    PacketOrderD: true # experimental
+    PacketOrderE: true # experimental
+    PacketOrderF: true # experimental
+    PacketOrderG: true # experimental
+    PacketOrderH: true # experimental
+    PacketOrderI: true # experimental
+    PacketOrderJ: true # experimental
+    PacketOrderK: true # experimental
+    PacketOrderL: true # experimental
+    PacketOrderM: true # experimental
+    PacketOrderN: true # experimental
+    PacketOrderO: true # experimental
+    # --- Предсказание движения ---
+    GroundSpoof: true
+    Phase: true
+    Simulation: true
+    # --- Скайблдинг / мосты ---
+    AirLiquidPlace: true
+    DuplicateRotPlace: true # experimental
+    FabricatedPlace: true
+    FarPlace: true
+    InvalidPlaceCursor: true
+    InvalidPlaceFace: true
+    MultiPlace: true # experimental
+    PositionPlace: true
+    RotationPlace: true
+    # --- Спринт ---
+    SprintA: true
+    SprintB: true # experimental
+    SprintC: true # experimental
+    SprintD: true # experimental
+    SprintE: true # experimental
+    SprintF: true # experimental
+    SprintG: true # experimental
+    # --- Таймер ---
+    NegativeTimer: true # experimental
+    TickTimer: true
+    TimerA: true
+    TimerLimit: true
+    VehicleTimer: true
+    # --- Транспорт ---
+    VehicleA: true
+    VehicleB: true
+    VehicleC: true
+    VehicleD: true # experimental
+    VehicleE: true # experimental
+    VehicleF: true # experimental
+    # --- Отдача (KB / Explosion) ---
+    Explosion: true
+    Knockback: true
+
 
 reset-item-usage-on-item-update: true
 reset-item-usage-on-attack: true
@@ -262,4 +427,4 @@ max-ping-firework-boost: 1000
 update-permission-ticks: -1
 
 config-flavor: V2
-config-version: 11
+config-version: 12

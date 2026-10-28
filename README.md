@@ -6,36 +6,28 @@
 </div>
 
 Thunder — античит для Minecraft с русской локализацией из коробки (переименованный форк GrimAC).
-Поддерживаются версии Minecraft 1.8–26.3. Игроки Geyser полностью освобождены от проверок во избежание ложных срабатываний.
+Поддерживаются версии Minecraft 1.19–26.3. Игроки Geyser полностью освобождены от проверок во избежание ложных срабатываний.
 Команды: `/thunder` (алиас `/th`), права: `thunder.*` (например `thunder.alerts`, `thunder.exempt`).
 This project is considered feature-complete for the 2.0 (open-source) branch. If you would like a bug fix or enhancement and cannot sponsor the work, pull requests are welcome.
 A premium version is planned, which will offer additional subscription-based paid checks, such as heuristics.
 
 ## Downloads
 
-- Latest updates:
-  - **[Modrinth](https://modrinth.com/plugin/grimac)** *(recommended)*
-  - GitHub
-  artifacts: [Bukkit](https://nightly.link/GrimAnticheat/Grim/workflows/gradle-publish/2.0/grimac-bukkit.zip), [Fabric](https://nightly.link/GrimAnticheat/Grim/workflows/gradle-publish/2.0/grimac-fabric.zip) *(bleeding edge)*
-- Major releases only:
-  - ~~[Hangar](https://hangar.papermc.io/GrimAnticheat/GrimAnticheat)~~
-  - ~~[SpigotMC](https://www.spigotmc.org/resources/grim-anticheat.99923/)~~
+- Скачивание: [GitHub Releases] releases и Telegram [@froriym81](https://t.me/froriym81).
 
 ## Requirements & Installation
 
-- Java 17 or higher. *For more details, see [Updating-to-Java-17](https://github.com/GrimAnticheat/Grim/wiki/Updating-to-Java-17).*
-- A Spigot, Paper, Folia, or Fabric server environment. *For more details, see [Supported-environments](https://github.com/GrimAnticheat/Grim/wiki/Supported-environments).*
+- Java 17 or higher.
+- A Paper or Purpur server environment, Minecraft 1.19 – 26.3.
 
 If you use a proxy such as Velocity or BungeeCord:
-- If you use Geyser, Floodgate must be installed on the backend server (where Grim is) so Grim can access the Floodgate API.
-- If you use ViaVersion, it must be installed on the backend server (where Grim is) ONLY.
-  Grim does not support having ViaVersion installed on the proxy, even if it is also installed on the backend.
+- If you use Geyser, Floodgate must be installed on the backend server (where Thunder is) so Thunder can access the Floodgate API.
+- If you use ViaVersion, it must be installed on the backend server (where Thunder is) ONLY.
+  Thunder does not support having ViaVersion installed on the proxy, even if it is also installed on the backend.
 
 ## Resources
 
-- For documentation and examples visit the [Wiki](https://github.com/GrimAnticheat/Grim/wiki).
-- For answers to commonly asked questions visit the [FAQ](https://github.com/GrimAnticheat/Grim/wiki/FAQ).
-- For community support and project discussion join our [Discord](https://discord.grim.ac).
+- Поддержка и вопросы: Telegram [@froriym81](https://t.me/froriym81).
 
 ## Pull Requests
 
@@ -44,20 +36,20 @@ are.
 
 ## Developer Plugin API
 
-Grim's plugin API allows you to integrate Grim into your own plugins. Visit
+Thunder's plugin API allows you to integrate Thunder into your own plugins. Visit
 the [plugin API repository](https://github.com/GrimAnticheat/GrimAPI) for the source code and more
 information.
 
 ## Compiling From Source
 
-1. `git clone https://github.com/Axionize/LightningGrim`
-2. `cd LightningGrim`
+1. `git clone https://github.com/Axionize/LightningThunder`
+2. `cd LightningThunder`
 3. `./gradlew build`
 4. The final jars will compile into the `<platform>/build/libs` folders
 
-## Grim Supremacy
+## Thunder Supremacy
 
-What makes Grim stand out against other anticheats?
+What makes Thunder stand out against other anticheats?
 
 ### Movement Simulation Engine
 

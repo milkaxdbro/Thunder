@@ -15,7 +15,7 @@ public class SprintF extends Check implements PostPredictionListener {
 
     @Override
     public boolean isApplicable() {
-        return player.getClientVersion() == ClientVersion.V_1_21_4;
+        return player.getClientVersion().isNewerThanOrEquals(ClientVersion.V_1_21_4);
     }
 
     @Override
