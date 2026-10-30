@@ -7,6 +7,7 @@ import ac.thunder.thunder.platform.api.player.PlatformPlayer;
 import ac.thunder.thunder.platform.api.sender.Sender;
 import ac.thunder.thunder.platform.bukkit.ThunderBukkitLoaderPlugin;
 import ac.thunder.thunder.platform.bukkit.entity.BukkitThunderEntity;
+import ac.thunder.thunder.platform.bukkit.events.KickPickupLock;
 import ac.thunder.thunder.platform.bukkit.utils.anticheat.MultiLibUtil;
 import ac.thunder.thunder.platform.bukkit.utils.convert.BukkitConversionUtils;
 import ac.thunder.thunder.platform.bukkit.utils.reflection.PaperUtils;
@@ -79,6 +80,9 @@ public class BukkitPlatformPlayer extends BukkitThunderEntity implements Platfor
         // one-shot particle bursts (FPS-friendly), drop the whole inventory
         // on the ground. Best-effort cosmetics — failures must not break
         // the punishment flow, the kick itself is scheduled by the caller.
+        // The punished player must not pick the dropped items back up during
+        // the ~3s window before the actual kick.
+        KickPickupLock.lockForKick(bukkitPlayer.getUniqueId());
         try {
             bukkitPlayer.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 60, 1, false, false));
         } catch (Throwable ignored) {
